@@ -1,0 +1,53 @@
+CREATE DATABASE ASYL;
+use ASYL;
+
+create table Nurse (
+nurseID integer(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+Fname varchar(50) NOT NULL,
+Lname varchar(50) NOT NULL
+);                              
+
+create table Doctor (
+doctorID integer(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+Fname varchar(50) NOT NULL,
+Lname varchar(50) NOT NULL,
+diagnoseID integer(10) NOT NULL,
+FOREIGN KEY (diagnoseID) REFERENCES Diagnose (diagnoseID)
+);                                  
+
+
+create table Diagnose (
+diagnoseID integer(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+diagnosename varchar(50) NOT NULL
+);                                 
+
+create table Medicine (
+medicineID integer(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+medicinename varchar(50) NOT NULL,
+dose flaot(10) NOT NULL,
+FOREIGN KEY (diagnoseID) REFERENCES Diagnose sho(diagnoseID)
+);
+
+create table Patient (
+patientId integer(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+Fname varchar(50) NOT NULL,
+Lname varchar(50) NOT NULL,
+nurseID integer(10) NOT NULL,
+FOREIGN KEY (nurseID) REFERENCES Nurse (nurseID)
+);
+
+
+create table DiagnosePatient(
+patientId integer(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+diagnoseID integer(10) NOT NULL,
+FOREIGN KEY (diagnoseID) REFERENCES Diagnose (diagnoseID)
+);                                
+   
+
+
+INSERT INTO Nurse VALUES (NULL, "Karin", "Lund");
+
+INSERT INTO Diagnose VALUES (NULL, "Brokenfoot");
+
+ 
+
